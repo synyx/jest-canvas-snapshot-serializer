@@ -1,0 +1,37 @@
+{
+  "name": "jest-canvas-snapshot-serializer",
+  "version": "1.0.0",
+  "description": "jest snapshot serializer for canvas elements",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint src"
+  },
+  "keywords": [
+    "jest",
+    "test"
+  ],
+  "author": "Benjamin Seber <seber@synyx.de>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/synyx/jest-canvas-snapshot-serializer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/synyx/jest-canvas-snapshot-serializer/issues"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "canvas-prebuilt": "1.6.5-prerelease.1",
+    "eslint": "4.15.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-prettier": "2.5.0",
+    "jest": "22.1.2",
+    "jsdom": "11.5.1",
+    "prettier": "1.10.2",
+    "pretty-format": "22.1.0"
+  },
+  "peerDependencies": {
+    "canvas-prebuilt": "1.6.5-prerelease.1"
+  }
+}
