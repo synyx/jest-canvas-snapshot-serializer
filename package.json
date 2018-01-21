@@ -33,5 +33,12 @@
   },
   "peerDependencies": {
     "canvas-prebuilt": "1.6.5-prerelease.1"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   }
 }

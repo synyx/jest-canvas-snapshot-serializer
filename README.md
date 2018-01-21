@@ -1,5 +1,8 @@
 # jest-canvas-snapshot-serializer
 
+[![build status][travis-image]][travis-url]
+[![coverage status][codecov-image]][codecov-url]
+
 Jest Snapshot Serializer to create comparable snapshots of canvas elements.
 
 ## Usage
@@ -77,3 +80,8 @@ Whereas using a serializer we only have to take care about the serialization of 
 
 Apache License 2.0
 
+
+[travis-image]: https://img.shields.io/travis/synyx/jest-canvas-snapshot-serializer.svg?style=flat-square
+[travis-url]: https://travis-ci.org/synyx/jest-canvas-snapshot-serializer
+[codecov-image]: https://img.shields.io/codecov/c/github/synyx/jest-canvas-snapshot-serializer.svg?style=flat-square
+[codecov-url]: https://codecov.io/gh/synyx/jest-canvas-snapshot-serializer
