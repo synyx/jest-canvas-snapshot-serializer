@@ -32,7 +32,8 @@
     "pretty-format": "22.1.0"
   },
   "peerDependencies": {
-    "canvas-prebuilt": "*"
+    "canvas-prebuilt": "*",
+    "jest": "*"
   },
   "jest": {
     "roots": [
