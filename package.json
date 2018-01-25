@@ -36,10 +36,11 @@
     "jest": "*"
   },
   "jest": {
-    "roots": [
-      "<rootDir>/src"
-    ],
     "coverageDirectory": "./coverage/",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "coveragePathIgnorePatterns": [
+      "<rootDir/node_modules/",
+      "<rootDir>/example/"
+    ]
   }
 }
