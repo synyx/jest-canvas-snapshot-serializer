@@ -45,12 +45,12 @@ exports["my awesome test 1"] = `
 <canvas
   width="200"
   height="200"
-  data-snapshot-image="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAADICAYAAABS39xVAAAABm...."
+  data-snapshot-image="51e09c5637c8c4cf463ce0da78329bcca119..."
 />
 `
 ```
 
-The snapshot now contains the base64 representation of the drawn image.
+The snapshot now contains a hashed representation of the drawn image.
 So we're informed about canvas image regressions \o/
 
 Furthermore this serializer will create an image file next to the snapshot file.
