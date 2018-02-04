@@ -61,7 +61,7 @@ module.exports = function toMatchCanvasSnapshotFactory(fs, path, hash, prettyFor
       ensureSnapshotDir();
 
       const clone = val.cloneNode();
-      clone.setAttribute("data-snapshot-image", hash(getImageContent(clone)));
+      clone.setAttribute("data-snapshot-image", hash(getImageContent(val)));
       const formatted = format(clone);
 
       const snapshotFormatted = getFormattedSnapshot();
