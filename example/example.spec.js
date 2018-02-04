@@ -20,7 +20,7 @@ describe("my test suite", () => {
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
 
-    canvas.setAttribute("height", "200");
+    canvas.setAttribute("width", "200");
     canvas.setAttribute("height", "200");
 
     context.fillStyle = color;
