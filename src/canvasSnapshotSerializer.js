@@ -1,4 +1,4 @@
-module.exports = function toMatchCanvasSnapshotFactory(fs, path, prettyFormat, getTestState) {
+module.exports = function toMatchCanvasSnapshotFactory(fs, path, hash, prettyFormat, getTestState) {
   function format(element) {
     return prettyFormat(element, {
       plugins: [prettyFormat.plugins.DOMElement],
@@ -57,17 +57,17 @@ module.exports = function toMatchCanvasSnapshotFactory(fs, path, prettyFormat, g
       const writeDirtyImage = () => write(imageDirtyFilePath);
       const deleteDirtyImage = () => deleteFile(imageDirtyFilePath);
 
+      // snapshot directory is not yet written by jest
+      ensureSnapshotDir();
+
       const clone = val.cloneNode();
-      clone.setAttribute("data-snapshot-image", val.toDataURL());
+      clone.setAttribute("data-snapshot-image", hash(getImageContent(clone)));
       const formatted = format(clone);
 
       const snapshotFormatted = getFormattedSnapshot();
 
       const dirty = formatted !== snapshotFormatted;
       const imageExists = fs.existsSync(imageFilePath);
-
-      // snapshot directory is not yet written by jest
-      ensureSnapshotDir();
 
       if (dirty) {
         if (update === "all") {
