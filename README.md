@@ -10,10 +10,10 @@ Jest Snapshot Serializer to create comparable snapshots of canvas elements.
 Make sure you're either running jest with environment set to `jsdom` (default setting)
 or you have setup `jsdom` in the test setup file.
 
-Install canvas-prebuilt and this module
+Install canvas and this module
 
 ```
-npm install --save-dev canvas-prebuilt jest-canvas-snapshot-serializer
+npm install --save-dev canvas jest-canvas-snapshot-serializer
 ```
 
 and add it as serializer
