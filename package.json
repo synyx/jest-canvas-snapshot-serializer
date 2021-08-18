@@ -26,19 +26,20 @@
   },
   "devDependencies": {
     "babel-core": "6.26.0",
-    "canvas-prebuilt": "2.0.0-alpha.5",
+    "canvas": "2.8.0",
     "eslint": "4.15.0",
     "eslint-config-prettier": "2.9.0",
     "eslint-plugin-prettier": "2.5.0",
-    "jest": "22.1.2",
-    "jsdom": "11.5.1",
+    "jest": "27.0.6",
+    "jsdom": "17.0.0",
     "prettier": "1.10.2"
   },
   "peerDependencies": {
-    "canvas-prebuilt": "*",
+    "canvas": "*",
     "jest": "*"
   },
   "jest": {
+    "testEnvironment": "jsdom",
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
     "coveragePathIgnorePatterns": [
