@@ -1,9 +1,19 @@
+
 # jest-canvas-snapshot-serializer
 
 [![build status][travis-image]][travis-url]
 [![coverage status][codecov-image]][codecov-url]
 
 Jest Snapshot Serializer to create comparable snapshots of canvas elements.
+
+> 😿 this project is deprecated.  
+>
+> an option may be to use [playwright](https://playwright.dev) and [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot)
+> * https://playwright.dev/docs/screenshots#element-screenshot
+>    ```js
+>    const screenshot = await page.screenshot();
+>    expect(screenshot).toMatchImageSnapshot();
+>    ```
 
 ## Usage
 
