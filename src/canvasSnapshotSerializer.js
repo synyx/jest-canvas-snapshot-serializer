@@ -15,8 +15,11 @@ module.exports = function toMatchCanvasSnapshotFactory(fs, path, hash, prettyFor
 
   function getImageContent(canvas) {
     const imageBase64 = canvas.toDataURL();
-    const imageContent = imageBase64.replace(/^data:image\/png;base64,/, "");
-    return imageContent;
+    return imageBase64.replace(/^data:image\/png;base64,/, "");
+  }
+
+  function getImageData(canvas) {
+    return canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data;
   }
 
   function deleteFile(filepath) {
@@ -61,7 +64,7 @@ module.exports = function toMatchCanvasSnapshotFactory(fs, path, hash, prettyFor
       ensureSnapshotDir();
 
       const clone = val.cloneNode();
-      clone.setAttribute("data-snapshot-image", hash(getImageContent(val)));
+      clone.setAttribute("data-snapshot-image", hash(getImageData(val)));
       const formatted = format(clone);
 
       const snapshotFormatted = getFormattedSnapshot();
