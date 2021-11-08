@@ -27,7 +27,7 @@
   "devDependencies": {
     "babel-core": "6.26.0",
     "canvas": "2.8.0",
-    "eslint": "4.15.0",
+    "eslint": "8.2.0",
     "eslint-config-prettier": "2.9.0",
     "eslint-plugin-prettier": "2.5.0",
     "jest": "27.3.1",
