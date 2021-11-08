@@ -57,7 +57,7 @@ module.exports = function toMatchCanvasSnapshotFactory(fs, path, hash, getTestSt
       const imageFilePath = `${snapshotPath}.${normalizedTestName}.canvas-image.png`;
       const imageDirtyFilePath = `${snapshotPath}.${normalizedTestName}.canvas-image.dirty.png`;
 
-      const write = filepath => fs.writeFileSync(filepath, getImageContent(val), "base64");
+      const write = (filepath) => fs.writeFileSync(filepath, getImageContent(val), "base64");
       const writeImage = () => write(imageFilePath);
       const writeDirtyImage = () => write(imageDirtyFilePath);
       const deleteDirtyImage = () => deleteFile(imageDirtyFilePath);

@@ -90,7 +90,7 @@ describe("canvasSnapshotSerializer", () => {
     it("when image is dirty but update mode is set to 'new' and image already exists", () => {
       fsMock.existsSync.mockReturnValue(true);
       mockTestState({ update: "new", snapshotData: "<canvas data-snapshot='true' />" });
-      prettyFormatMock.mockImplementation(element => {
+      prettyFormatMock.mockImplementation((element) => {
         const isSnapshotCanvas = Boolean(element.getAttribute("data-snapshot"));
         return isSnapshotCanvas ? "snapshotCanvasFormatted" : "receivedCanvasFormatted";
       });
@@ -110,7 +110,7 @@ describe("canvasSnapshotSerializer", () => {
     it("when update mode is set to 'new' and image exists", () => {
       fsMock.existsSync.mockReturnValue(true);
       mockTestState({ update: "new", snapshotData: "<canvas data-snapshot='true' />" });
-      prettyFormatMock.mockImplementation(element => {
+      prettyFormatMock.mockImplementation((element) => {
         const isSnapshotCanvas = Boolean(element.getAttribute("data-snapshot"));
         return isSnapshotCanvas ? "snapshotCanvasFormatted" : "receivedCanvasFormatted";
       });
@@ -182,7 +182,7 @@ describe("canvasSnapshotSerializer", () => {
     it("when image is dirty but update mode is set to 'all'", () => {
       fsMock.existsSync.mockReturnValue(true);
       mockTestState({ update: "all", snapshotData: "<canvas data-snapshot='true' />" });
-      prettyFormatMock.mockImplementation(element => {
+      prettyFormatMock.mockImplementation((element) => {
         const isSnapshotCanvas = Boolean(element.getAttribute("data-snapshot"));
         return isSnapshotCanvas ? "snapshotCanvasFormatted" : "receivedCanvasFormatted";
       });
@@ -195,7 +195,7 @@ describe("canvasSnapshotSerializer", () => {
     });
 
     describe("when image is not dirty", () => {
-      ["new", "all", "none"].forEach(update => {
+      ["new", "all", "none"].forEach((update) => {
         it(`and update mode is set to "${update}"`, () => {
           fsMock.existsSync.mockReturnValue(true);
           mockTestState({ update, snapshotData: "<canvas data-snapshot='true' />" });
@@ -213,9 +213,9 @@ describe("canvasSnapshotSerializer", () => {
   });
 
   describe("dirty image is not deleted", () => {
-    ["new", "all", "none"].forEach(update => {
+    ["new", "all", "none"].forEach((update) => {
       it(`when it does not exist and update mode is set to "${update}"`, () => {
-        fsMock.existsSync.mockImplementation(pathname => pathname !== dirtyImageFilePath);
+        fsMock.existsSync.mockImplementation((pathname) => pathname !== dirtyImageFilePath);
         // the snapshotData is not of interest here
         // it only has to be defined to invoke prettyFormat
         mockTestState({ update, snapshotData: "canvas snapshot" });
