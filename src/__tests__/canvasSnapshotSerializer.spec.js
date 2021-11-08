@@ -1,10 +1,12 @@
 const path = require("path");
+const { format: prettyFormatMock, plugins: prettyFormatPlugins } = require("pretty-format");
 const createCanvasSnapshotSerializer = require("../canvasSnapshotSerializer");
+
+jest.mock("pretty-format");
 
 describe("canvasSnapshotSerializer", () => {
   const fsMock = jest.genMockFromModule("fs");
   const hash = () => "hash-mock-value";
-  const prettyFormatMock = jest.genMockFromModule("pretty-format");
   const getStateMock = jest.fn();
 
   const currentTestName = "awesome test name";
@@ -21,13 +23,7 @@ describe("canvasSnapshotSerializer", () => {
     fsMock.writeFileSync.mockImplementation(() => {});
     fsMock.unlinkSync.mockImplementation(() => {});
 
-    canvasSnapshotSerializer = createCanvasSnapshotSerializer(
-      fsMock,
-      path,
-      hash,
-      prettyFormatMock,
-      getStateMock,
-    );
+    canvasSnapshotSerializer = createCanvasSnapshotSerializer(fsMock, path, hash, getStateMock);
   });
 
   afterEach(() => {
@@ -50,7 +46,7 @@ describe("canvasSnapshotSerializer", () => {
 
     expect(actual).toEqual("pretty format");
     expect(prettyFormatMock).toHaveBeenCalledWith(expectedCanvas, {
-      plugins: [prettyFormatMock.plugins.DOMElement],
+      plugins: [prettyFormatPlugins.DOMElement],
     });
   });
 

@@ -1,7 +1,9 @@
-module.exports = function toMatchCanvasSnapshotFactory(fs, path, hash, prettyFormat, getTestState) {
+const { format: prettyFormat, plugins: prettyFormatPlugins } = require("pretty-format");
+
+module.exports = function toMatchCanvasSnapshotFactory(fs, path, hash, getTestState) {
   function format(element) {
     return prettyFormat(element, {
-      plugins: [prettyFormat.plugins.DOMElement],
+      plugins: [prettyFormatPlugins.DOMElement],
     });
   }
 
