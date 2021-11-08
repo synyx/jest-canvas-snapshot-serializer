@@ -1,7 +1,6 @@
 # jest-canvas-snapshot-serializer
 
 [![build status][travis-image]][travis-url]
-[![coverage status][codecov-image]][codecov-url]
 
 Jest Snapshot Serializer to create comparable snapshots of canvas elements.
 
