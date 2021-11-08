@@ -1,7 +1,9 @@
-module.exports = function toMatchCanvasSnapshotFactory(fs, path, hash, prettyFormat, getTestState) {
+const { format: prettyFormat, plugins: prettyFormatPlugins } = require("pretty-format");
+
+module.exports = function toMatchCanvasSnapshotFactory(fs, path, hash, getTestState) {
   function format(element) {
     return prettyFormat(element, {
-      plugins: [prettyFormat.plugins.DOMElement],
+      plugins: [prettyFormatPlugins.DOMElement],
     });
   }
 
@@ -55,7 +57,7 @@ module.exports = function toMatchCanvasSnapshotFactory(fs, path, hash, prettyFor
       const imageFilePath = `${snapshotPath}.${normalizedTestName}.canvas-image.png`;
       const imageDirtyFilePath = `${snapshotPath}.${normalizedTestName}.canvas-image.dirty.png`;
 
-      const write = filepath => fs.writeFileSync(filepath, getImageContent(val), "base64");
+      const write = (filepath) => fs.writeFileSync(filepath, getImageContent(val), "base64");
       const writeImage = () => write(imageFilePath);
       const writeDirtyImage = () => write(imageDirtyFilePath);
       const deleteDirtyImage = () => deleteFile(imageDirtyFilePath);

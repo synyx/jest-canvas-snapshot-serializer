@@ -1,10 +1,12 @@
 const path = require("path");
+const { format: prettyFormatMock, plugins: prettyFormatPlugins } = require("pretty-format");
 const createCanvasSnapshotSerializer = require("../canvasSnapshotSerializer");
+
+jest.mock("pretty-format");
 
 describe("canvasSnapshotSerializer", () => {
   const fsMock = jest.genMockFromModule("fs");
   const hash = () => "hash-mock-value";
-  const prettyFormatMock = jest.genMockFromModule("pretty-format");
   const getStateMock = jest.fn();
 
   const currentTestName = "awesome test name";
@@ -21,13 +23,7 @@ describe("canvasSnapshotSerializer", () => {
     fsMock.writeFileSync.mockImplementation(() => {});
     fsMock.unlinkSync.mockImplementation(() => {});
 
-    canvasSnapshotSerializer = createCanvasSnapshotSerializer(
-      fsMock,
-      path,
-      hash,
-      prettyFormatMock,
-      getStateMock,
-    );
+    canvasSnapshotSerializer = createCanvasSnapshotSerializer(fsMock, path, hash, getStateMock);
   });
 
   afterEach(() => {
@@ -50,7 +46,7 @@ describe("canvasSnapshotSerializer", () => {
 
     expect(actual).toEqual("pretty format");
     expect(prettyFormatMock).toHaveBeenCalledWith(expectedCanvas, {
-      plugins: [prettyFormatMock.plugins.DOMElement],
+      plugins: [prettyFormatPlugins.DOMElement],
     });
   });
 
@@ -94,7 +90,7 @@ describe("canvasSnapshotSerializer", () => {
     it("when image is dirty but update mode is set to 'new' and image already exists", () => {
       fsMock.existsSync.mockReturnValue(true);
       mockTestState({ update: "new", snapshotData: "<canvas data-snapshot='true' />" });
-      prettyFormatMock.mockImplementation(element => {
+      prettyFormatMock.mockImplementation((element) => {
         const isSnapshotCanvas = Boolean(element.getAttribute("data-snapshot"));
         return isSnapshotCanvas ? "snapshotCanvasFormatted" : "receivedCanvasFormatted";
       });
@@ -114,7 +110,7 @@ describe("canvasSnapshotSerializer", () => {
     it("when update mode is set to 'new' and image exists", () => {
       fsMock.existsSync.mockReturnValue(true);
       mockTestState({ update: "new", snapshotData: "<canvas data-snapshot='true' />" });
-      prettyFormatMock.mockImplementation(element => {
+      prettyFormatMock.mockImplementation((element) => {
         const isSnapshotCanvas = Boolean(element.getAttribute("data-snapshot"));
         return isSnapshotCanvas ? "snapshotCanvasFormatted" : "receivedCanvasFormatted";
       });
@@ -186,7 +182,7 @@ describe("canvasSnapshotSerializer", () => {
     it("when image is dirty but update mode is set to 'all'", () => {
       fsMock.existsSync.mockReturnValue(true);
       mockTestState({ update: "all", snapshotData: "<canvas data-snapshot='true' />" });
-      prettyFormatMock.mockImplementation(element => {
+      prettyFormatMock.mockImplementation((element) => {
         const isSnapshotCanvas = Boolean(element.getAttribute("data-snapshot"));
         return isSnapshotCanvas ? "snapshotCanvasFormatted" : "receivedCanvasFormatted";
       });
@@ -199,7 +195,7 @@ describe("canvasSnapshotSerializer", () => {
     });
 
     describe("when image is not dirty", () => {
-      ["new", "all", "none"].forEach(update => {
+      ["new", "all", "none"].forEach((update) => {
         it(`and update mode is set to "${update}"`, () => {
           fsMock.existsSync.mockReturnValue(true);
           mockTestState({ update, snapshotData: "<canvas data-snapshot='true' />" });
@@ -217,9 +213,9 @@ describe("canvasSnapshotSerializer", () => {
   });
 
   describe("dirty image is not deleted", () => {
-    ["new", "all", "none"].forEach(update => {
+    ["new", "all", "none"].forEach((update) => {
       it(`when it does not exist and update mode is set to "${update}"`, () => {
-        fsMock.existsSync.mockImplementation(pathname => pathname !== dirtyImageFilePath);
+        fsMock.existsSync.mockImplementation((pathname) => pathname !== dirtyImageFilePath);
         // the snapshotData is not of interest here
         // it only has to be defined to invoke prettyFormat
         mockTestState({ update, snapshotData: "canvas snapshot" });

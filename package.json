@@ -21,30 +21,19 @@
     "url": "https://github.com/synyx/jest-canvas-snapshot-serializer/issues"
   },
   "dependencies": {
-    "hasha": "3.0.0",
-    "pretty-format": "22.1.0"
+    "hasha": "5.2.2",
+    "pretty-format": "27.3.1"
   },
   "devDependencies": {
-    "babel-core": "6.26.0",
     "canvas": "2.8.0",
-    "eslint": "4.15.0",
-    "eslint-config-prettier": "2.9.0",
-    "eslint-plugin-prettier": "2.5.0",
-    "jest": "27.0.6",
-    "jsdom": "17.0.0",
-    "prettier": "1.10.2"
+    "eslint": "8.2.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "jest": "27.3.1",
+    "prettier": "2.4.1"
   },
   "peerDependencies": {
     "canvas": "*",
     "jest": "*"
-  },
-  "jest": {
-    "testEnvironment": "jsdom",
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true,
-    "coveragePathIgnorePatterns": [
-      "<rootDir/node_modules/",
-      "<rootDir>/example/"
-    ]
   }
 }
