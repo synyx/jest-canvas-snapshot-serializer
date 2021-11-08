@@ -21,7 +21,7 @@
     "url": "https://github.com/synyx/jest-canvas-snapshot-serializer/issues"
   },
   "dependencies": {
-    "hasha": "3.0.0",
+    "hasha": "5.2.2",
     "pretty-format": "22.1.0"
   },
   "devDependencies": {
