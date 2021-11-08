@@ -35,14 +35,5 @@
   "peerDependencies": {
     "canvas": "*",
     "jest": "*"
-  },
-  "jest": {
-    "testEnvironment": "jsdom",
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true,
-    "coveragePathIgnorePatterns": [
-      "<rootDir/node_modules/",
-      "<rootDir>/example/"
-    ]
   }
 }
