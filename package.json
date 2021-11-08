@@ -25,7 +25,6 @@
     "pretty-format": "27.3.1"
   },
   "devDependencies": {
-    "babel-core": "6.26.0",
     "canvas": "2.8.0",
     "eslint": "8.2.0",
     "eslint-config-prettier": "8.3.0",
